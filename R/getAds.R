@@ -38,7 +38,7 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 
 
 
-new_KijijiAds = function(URL, exclude, pages, inputFile, outputFile = NULL)
+new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, outputFile = NULL)
 {
 
   # source python functions
@@ -83,8 +83,10 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, outputFile = NULL)
     print(paste('Found', length(newAds), 'ads. Updating the `', inputFile, '` file'))
 
     # update data base
-    ads = append(adsFile, newAds)
-    write(rjson::toJSON(ads), file = inputFile)
+    if(updateInput) {
+      ads = append(adsFile, newAds)
+      write(rjson::toJSON(ads), file = inputFile)
+    }
 
     # output results
     if(is.null(outputFile))
