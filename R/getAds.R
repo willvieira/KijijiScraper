@@ -80,10 +80,11 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
 
   }else {
 
-    print(paste('Found', length(newAds), 'ads. Updating the `', inputFile, '` file'))
+    print(paste('Found', length(newAds), 'ads'))
 
     # update data base
     if(updateInput) {
+      print(paste('Updating the `', inputFile, '` file'))
       ads = append(adsFile, newAds)
       write(rjson::toJSON(ads), file = inputFile)
     }
