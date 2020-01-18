@@ -24,6 +24,9 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
     }
   }
 
+  # clean ads
+  ads <- lapply(ads, function(x) lapply(x, function(xx) gsub("[\r\n]", "", xx)))
+
   # output results
   if(is.null(outputFile))
   {
@@ -70,6 +73,9 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
       newAds <- append(newAds, kijiji$scrape_kijiji_for_ads(URL))
     }
   }
+
+  # clean newAds
+  newAds <- lapply(newAds, function(x) lapply(x, function(xx) gsub("[\r\n]", "", xx)))
 
   # remove ads already present in data base
   newAds = newAds[!(names(newAds) %in% adsNames)]
