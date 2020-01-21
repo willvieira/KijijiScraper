@@ -1,8 +1,6 @@
 # get adds
 all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 {
-  # source python functions
-  reticulate::source_python('python/kijiji_scrap.py')
 
   # pass adsList to KijijiScraper python function
   kijiji = KijijiScraper(exclude = exclude)
@@ -43,9 +41,6 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 
 new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, outputFile = NULL)
 {
-
-  # source python functions
-  reticulate::source_python('python/kijiji_scrap.py')
 
   # load ads file if it exists
   if(file.exists(inputFile)) {
