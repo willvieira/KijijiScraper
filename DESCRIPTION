@@ -1,0 +1,30 @@
+Package: KijijiScraper
+Title: Retrieve kijiji ads, and inform me about new ads
+Version: 0.0.0.1
+Authors@R:
+    person(given = "Willian",
+           family = "Vieira",
+           role = c("aut", "cre"),
+           email = "w.vieiraw@gmail.com",
+           comment = c(ORCID = "0000-0003-0283-4570"))
+Description: This R package retrieve ads from Kijiji. It also sends you a message when new ads are added to Kijiji.
+License: MIT + file LICENSE
+Encoding: UTF-8
+URL: https://github.com/willvieira/KijijiScraper
+BugReports: https://github.com/willvieira/KijijiScraper/issues
+Imports:
+    reticulate,
+    magrittr,
+    rjson,
+    yaml,
+    emayili
+RoxygenNote: 7.0.2
+Suggests:
+    knitr,
+    rmarkdown,
+    devtools,
+    covr,
+    pkgdown,
+    testthat
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)

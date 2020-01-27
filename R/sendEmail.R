@@ -1,3 +1,28 @@
+#' Send email with new retrieved ads
+#'
+#' This function is a wrapper of the emayili R package to send email messages
+#' with the information of the new ads
+#'
+#' The \code{mailInfo} file needs the following arguments: \cr
+#' from: \cr
+#' to: \cr
+#' host: \cr
+#' port: \cr
+#' username: \cr
+#' password: \cr
+#'
+#' @param mailInfo character, the name of the file where all addresses and server
+#' information are saved
+#' @param newAds list, the output of the \code{\link{new_KijijiAds}} function
+
+#' @export
+#' @examples
+#' \dontrun{
+#' URL <- https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860
+#' sendEmail('_mailInfo.yml',
+#'           newAds = new_KijijiAds(URL, excludeWords, pages = 2,
+#'                                  inputFile = 'ads.json', updateInput = TRUE))
+#' }
 
 sendEmail = function(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, excludeWords, pages, inputFile))
 {

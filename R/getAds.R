@@ -1,4 +1,25 @@
-# get adds
+#' Retrieve all Kijiji ads
+#'
+#' This function retrieves all ads from a Kijiji research URL. Third party ads
+#' are removed.
+#'
+#' @param URL character, the address after doing a specific search on Kijiji
+#' @param exclude vector, keywords to remove unwanted ads
+#' @param pages numeric, total amount of pages to look for ads
+#' @param outputFile character, name of the output file to save the retrieved ads.
+#' If \code{NULL} it will return a list of ads
+
+#' @return list of ads
+#' @export
+#' @examples
+#' \dontrun{
+#' # Retrieve all ads renting an apartment 3 1/2 in Montreal
+#' # Exclude ads looking for an exchange
+#' # And save the result in the 'ads.json' file
+#' URL <- https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860
+#' all_KijijiAds(URL, exclude = 'echange', pages = 3, outputFile = 'ads.json')
+#' }
+
 all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 {
 
@@ -38,6 +59,22 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 
 
 
+#' Retrieve new Kijiji ads not present in the database
+#'
+#' This function retrieves all new ads from a Kijiji research URL that are not present
+#' in the defined database `inputFile`.
+#'
+#' @param URL character, the address after doing a specific search on Kijiji
+#' @param exclude vector, keywords to remove unwanted ads
+#' @param pages numeric, total amount of pages to look for ads
+#' @param inputFile character, name of the database file used in the \code{\link{all_KijijiAds}} function
+#' @param updateInput logical, if FALSE it will not update the inputFile with the new retrieved ads.
+#' Useful in case of debuging
+#' @param outputFile character, name of the output file to save the retrieved new ads
+#' If `NULL` it will retun a list of ads
+
+#' @return list of new ads
+#' @export
 
 new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, outputFile = NULL)
 {
