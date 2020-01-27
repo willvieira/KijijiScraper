@@ -30,7 +30,7 @@ password: \cr
 }
 \examples{
 \dontrun{
-URL <- https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860
+URL <- 'https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860'
 sendEmail('_mailInfo.yml',
           newAds = new_KijijiAds(URL, excludeWords, pages = 2,
                                  inputFile = 'ads.json', updateInput = TRUE))

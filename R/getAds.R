@@ -16,7 +16,7 @@
 #' # Retrieve all ads renting an apartment 3 1/2 in Montreal
 #' # Exclude ads looking for an exchange
 #' # And save the result in the 'ads.json' file
-#' URL <- https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860
+#' URL <- 'https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860'
 #' all_KijijiAds(URL, exclude = 'echange', pages = 3, outputFile = 'ads.json')
 #' }
 
