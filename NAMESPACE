@@ -3,3 +3,4 @@
 export(all_KijijiAds)
 export(new_KijijiAds)
 export(sendEmail)
+importFrom(magrittr,"%>%")
