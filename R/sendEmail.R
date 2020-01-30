@@ -56,10 +56,10 @@ sendEmail = function(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, exc
       addID <- which(unlist(lapply(newAds, function(x) x$mainURL == mURL)))
 
       # add main URL as a title
-      Body <- append(Body, paste('\nAds for the searching URL:', mURL, ':\n'))
+      Body <- paste(Body, paste('\nAds for the searching URL:', mURL, ':\n\n'))
 
       for(i in 1:length(addID)) {
-        Body = append(Body, paste(paste(paste('-', newAds[[i]]['Title']),
+        Body = paste(Body, paste(paste(paste('-', newAds[[i]]['Title']),
                                         newAds[[i]]['Url'],
                                         newAds[[i]]['Date'],
                                         newAds[[i]]['Location'],
