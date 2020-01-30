@@ -38,13 +38,18 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 
     for(page in 2:pages)
     {
-      URL = paste0(firstURL, '/page-', page, '/', lastURL)
-      ads <- append(ads, kijiji$scrape_kijiji_for_ads(URL))
+      sURL = paste0(firstURL, '/page-', page, '/', lastURL)
+      ads <- append(ads, kijiji$scrape_kijiji_for_ads(sURL))
     }
   }
 
   # clean ads
   ads <- lapply(ads, function(x) lapply(x, function(xx) gsub("[\r\n]", "", xx)))
+
+  # add mail URL info for each add (useful when one list of multiple URL requires)
+  for(i in 1:length(ads)) {
+    ads[[i]] <- append(ads[[i]], setNames(URL, 'mainURL'))
+  }
 
   # output results
   if(is.null(outputFile))
@@ -101,8 +106,8 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
 
     for(page in 2:pages)
     {
-      URL = paste0(firstURL, '/page-', page, '/', lastURL)
-      newAds <- append(newAds, kijiji$scrape_kijiji_for_ads(URL))
+      sURL = paste0(firstURL, '/page-', page, '/', lastURL)
+      newAds <- append(newAds, kijiji$scrape_kijiji_for_ads(sURL))
     }
   }
 
@@ -120,6 +125,11 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
 
     print(paste('Found', length(newAds), 'ads'))
 
+    # add mail URL info for each add (useful when one list of multiple URL requires)
+    for(i in 1:length(newAds)) {
+      newAds[[i]] <- append(newAds[[i]], setNames(URL, 'mainURL'))
+    }
+    
     # update data base
     if(updateInput) {
       print(paste('Updating the `', inputFile, '` file'))

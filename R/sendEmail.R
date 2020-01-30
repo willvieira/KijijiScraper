@@ -30,21 +30,41 @@ sendEmail = function(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, exc
 
   # test if output is empty
   if(is.list(newAds)) {
-    # laod user infos
+
+    ## Remove empty add if any of the URL did not find new ads
+    if(any(nchar(names(newAds)) == 0)) {
+      rmEmptyAdd <- which(nchar(names(newAds)) == 0)
+      newAds <- newAds[-rmEmptyAdd]
+    }
+
+    ## laod user infos
     infos = yaml::yaml.load_file(input = mailInfo)
 
-    # set ads infos for email
+    ## set ads infos for email
+    # separete ads by main URL search (if multiple URL's at once)
+    mainURLs <- unique(unlist(lapply(newAds, function(x) x$mainURL)))
+
+    # nb of ads
     nNew = length(newAds)
 
     Subject = paste0('I found ', nNew, ' new ', ifelse(nNew == 1, 'ad', 'ads'), ' on Kijiji')
 
     Body = c()
-    for(i in 1:nNew) {
-      Body = append(Body, paste(paste(newAds[[i]]['Title'],
-                                      newAds[[i]]['Url'],
-                                      newAds[[i]]['Date'],
-                                      newAds[[i]]['Location'],
-                                      newAds[[i]]['Price'], sep = '\n'), '\n', '\n'))
+    for(mURL in mainURLs) {
+
+      # get ads for specific main URL
+      addID <- which(unlist(lapply(newAds, function(x) x$mainURL == mURL)))
+
+      # add main URL as a title
+      Body <- append(Body, paste('\nAds for the searching URL:', mURL, ':\n'))
+
+      for(i in 1:length(addID)) {
+        Body = append(Body, paste(paste(paste('-', newAds[[i]]['Title']),
+                                        newAds[[i]]['Url'],
+                                        newAds[[i]]['Date'],
+                                        newAds[[i]]['Location'],
+                                        newAds[[i]]['Price'], sep = '\n'), '\n', '\n'))
+      }
     }
 
     # Send email
