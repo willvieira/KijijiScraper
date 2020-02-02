@@ -1,5 +1,5 @@
 language: R
-sudo: false
+sudo: true
 cache: packages
 
 python:
@@ -10,7 +10,6 @@ os:
 #  - osx
 
 before_install:
-  - easy_install distribute
   - pip install -r requirements.txt
 
 r_packages:
