@@ -1,16 +1,15 @@
 language: R
-sudo: true
-cache: packages
-
-python:
-  - 3.6
+sudo: false
+cache:
+  - packages
+  - pip
 
 os:
   - linux
 #  - osx
 
 before_install:
-  - pip install -r requirements.txt
+  - pip install --user -r requirements.txt
 
 r_packages:
   - reticulate
@@ -18,7 +17,6 @@ r_packages:
   - rjson
   - yaml
   - knitr
-  - bookdown
   - githubinstall
 
 r_github_packages:
