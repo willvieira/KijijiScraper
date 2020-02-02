@@ -56,14 +56,14 @@ sendEmail = function(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, exc
       addID <- which(unlist(lapply(newAds, function(x) x$mainURL == mURL)))
 
       # add main URL as a title
-      Body <- paste(Body, paste('\nAds for the searching URL:', mURL, ':\n\n'))
+      Body <- paste(Body, paste('\n<b>Ads for the searching URL</b>:', mURL, ':<br><br>'))
 
       for(i in 1:length(addID)) {
         Body = paste(Body, paste(paste(paste('-', newAds[[i]]['Title']),
                                         newAds[[i]]['Url'],
                                         newAds[[i]]['Date'],
                                         newAds[[i]]['Location'],
-                                        newAds[[i]]['Price'], sep = '\n'), '\n', '\n'))
+                                        newAds[[i]]['Price'], sep = '<br>'), '<br>', '<br>'))
       }
     }
 
@@ -72,7 +72,7 @@ sendEmail = function(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, exc
              emayili::from(infos[['from']]) %>%
              emayili::to(infos[['to']]) %>%
              emayili::subject(Subject) %>%
-             emayili::text(Body)
+             emayili::html(Body)
 
     smtp <- emayili::server(host = infos[['host']],
                             port = infos[['port']],
