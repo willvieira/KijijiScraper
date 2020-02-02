@@ -2,6 +2,9 @@ language: R
 sudo: false
 cache: packages
 
+python:
+  - 3.6
+
 os:
   - linux
 #  - osx
