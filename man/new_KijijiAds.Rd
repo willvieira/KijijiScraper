@@ -32,6 +32,6 @@ If \code{NULL} it will retun a list of ads}
 list of new ads
 }
 \description{
-This function retrieves all new ads from a Kijiji research URL that are not present
+This function retrieves all new ads from a Kijiji search URL that are not present
 in the defined database \code{inputFile}.
 }

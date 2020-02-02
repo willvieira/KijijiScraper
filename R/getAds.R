@@ -1,6 +1,6 @@
 #' Retrieve all Kijiji ads
 #'
-#' This function retrieves all ads from a Kijiji research URL. Third party ads
+#' This function retrieves all ads from a Kijiji search URL. Third party ads
 #' are removed.
 #'
 #' @param URL character, the address after doing a specific search on Kijiji
@@ -66,7 +66,7 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 
 #' Retrieve new Kijiji ads not present in the database
 #'
-#' This function retrieves all new ads from a Kijiji research URL that are not present
+#' This function retrieves all new ads from a Kijiji search URL that are not present
 #' in the defined database `inputFile`.
 #'
 #' @param URL character, the address after doing a specific search on Kijiji
@@ -129,7 +129,7 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
     for(i in 1:length(newAds)) {
       newAds[[i]] <- append(newAds[[i]], setNames(URL, 'mainURL'))
     }
-    
+
     # update data base
     if(updateInput) {
       print(paste('Updating the `', inputFile, '` file'))

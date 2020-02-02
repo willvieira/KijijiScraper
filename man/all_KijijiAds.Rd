@@ -20,7 +20,7 @@ If \code{NULL} it will return a list of ads}
 list of ads
 }
 \description{
-This function retrieves all ads from a Kijiji research URL. Third party ads
+This function retrieves all ads from a Kijiji search URL. Third party ads
 are removed.
 }
 \examples{
