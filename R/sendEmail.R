@@ -12,6 +12,8 @@
 #' password: \cr
 #'
 #' @importFrom magrittr %>%
+#' @importFrom yaml yaml.load_file
+#'
 #' @param mailInfo character, the name of the file where all addresses and server
 #' information are saved
 #' @param newAds list, the output of the \code{\link{new_KijijiAds}} function

@@ -3,6 +3,9 @@
 #' This function retrieves all ads from a Kijiji search URL. Third party ads
 #' are removed.
 #'
+#' @importFrom rjson fromJSON
+#' @importFrom rjson toJSON
+#'
 #' @param URL character, the address after doing a specific search on Kijiji
 #' @param exclude vector, keywords to remove unwanted ads
 #' @param pages numeric, total amount of pages to look for ads
