@@ -1,5 +1,6 @@
 language: R
-sudo: false
+sudo: required
+dist: xenial
 
 addons:
   apt:
