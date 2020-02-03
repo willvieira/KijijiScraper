@@ -1,5 +1,11 @@
 language: R
 sudo: false
+
+addons:
+  apt:
+    packages:
+    - python3.6
+
 cache:
   - packages
   - pip
