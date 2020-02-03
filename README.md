@@ -24,7 +24,7 @@ reticulate::py_install(c('requests', 'bs4', 'pyyaml'))
 Once Python dependencies are solved, you can install the `KijijiScraper` R package from GitHub:
 
 ```r
-devtools::github_install('willvieira/kijijiScraper')
+devtools::install_github('willvieira/kijijiScraper')
 ```
 
 ## Quick start
