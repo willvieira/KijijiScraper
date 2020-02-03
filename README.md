@@ -1,7 +1,7 @@
 # KijijiScraper
 ## Retrieve new ads and keep me updated
 
-[![Build Status](https://travis-ci.org/willvieira/KijijiScraper.svg?branch=master)](https://travis-ci.org/willvieira/KijijiScraper)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Build Status](https://travis-ci.org/willvieira/KijijiScraper.svg?branch=master)](https://travis-ci.org/willvieira/KijijiScraper) [![time tracker](https://wakatime.com/badge/github/willvieira/KijijiScraper.svg)](https://wakatime.com/badge/github/willvieira/KijijiScraper)
 
 This R package have three simple functionalities. From a specific search on the [Kijiji](https://www.kijiji.ca/) website, it can (i) retrieve all ads and save in a database to further exploration; (ii) retrieve new ads not present in the current database; and (iii) send a message with the new ads retrieved in the last step.
 
