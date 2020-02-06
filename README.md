@@ -3,7 +3,7 @@
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Build Status](https://travis-ci.org/willvieira/KijijiScraper.svg?branch=master)](https://travis-ci.org/willvieira/KijijiScraper) [![time tracker](https://wakatime.com/badge/github/willvieira/KijijiScraper.svg)](https://wakatime.com/badge/github/willvieira/KijijiScraper)
 
-This R package have three simple functionalities. From a specific search on the [Kijiji](https://www.kijiji.ca/) website, it can (i) retrieve all ads and save in a database to further exploration; (ii) retrieve new ads not present in the current database; and (iii) send a message with the new ads retrieved in the last step.
+This R package have three simple functionalities. From a specific search on the [Kijiji](https://www.kijiji.ca/), it can (i) retrieve all ads and save it in a database to further exploration; (ii) retrieve new ads not present in the current database; and (iii) send a message with the new ads retrieved in the last step.
 
 ## Installation
 
@@ -11,7 +11,7 @@ This package requires Python 3+ to be installed along with some Python packages,
 
 ```bash
 # or pip3
-pip install -r requirements.txt
+pip install requests bs4 pyyaml
 ```
 
 A R alternative to install Python packages is to use `reticulate`, which will require a virtual environment (more details [here](https://rstudio.github.io/reticulate/articles/python_packages.html)):
@@ -85,10 +85,13 @@ all_KijijiAds(URL = 'myURL', exclude = c('keyword1', 'keyword2'), pages = 4, out
 Once your database of ads is set, you can create an R script which will be called by Crontab/Task Scheduler, send you an email if it finds new ads, and finally update your database with the new ads (if `updateInput = TRUE`):
 
 ```r
-# R file named ./searchKijiji.R
 URL = 'myURL'
 excludeWords = c('keyword1', 'keyword12', '...')
-sendEmail(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL, excludeWords, pages = 2, inputFile = 'ads.json', updateInput = TRUE))
+sendEmail(mailInfo = '_mailInfo.yml', newAds = new_KijijiAds(URL,
+                                                             excludeWords,
+                                                             pages = 2,
+                                                             inputFile = 'ads.json',
+                                                             updateInput = TRUE))
 ```
 
 Now you just have to set a Crontab/Task Scheduler to execute the R script above.
