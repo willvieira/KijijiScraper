@@ -5,6 +5,7 @@
 #'
 #' @importFrom rjson fromJSON
 #' @importFrom rjson toJSON
+#' @importFrom stats setNames
 #'
 #' @param URL character, the address after doing a specific search on Kijiji
 #' @param exclude vector, keywords to remove unwanted ads

@@ -13,6 +13,12 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom yaml yaml.load_file
+#' @importFrom emayili envelope
+#' @importFrom emayili from
+#' @importFrom emayili to
+#' @importFrom emayili subject
+#' @importFrom emayili html
+#' @importFrom emayili server
 #'
 #' @param mailInfo character, the name of the file where all addresses and server
 #' information are saved

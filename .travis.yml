@@ -1,4 +1,5 @@
 language: r
+warnings_are_errors: false
 sudo: required
 dist: trusty
 
@@ -12,17 +13,6 @@ os:
 
 before_install:
   - pip install --user numpy requests bs4 pyyaml
-
-r_packages:
-  - reticulate
-  - magrittr
-  - rjson
-  - yaml
-  - knitr
-  - githubinstall
-
-r_github_packages:
-  - datawookie/emayili
 
 after_success:
   - Rscript -e 'covr::codecov()'
