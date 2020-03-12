@@ -1,11 +1,6 @@
-language: R
+language: r
 sudo: required
 dist: xenial
-
-addons:
-  apt:
-    packages:
-    - python3.6
 
 cache:
   - packages
@@ -16,7 +11,7 @@ os:
 #  - osx
 
 before_install:
-  - pip install --user -r requirements.txt
+  - pip install numpy requests bs4 pyyaml
 
 r_packages:
   - reticulate
