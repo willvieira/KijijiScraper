@@ -1,6 +1,6 @@
 language: r
 sudo: required
-dist: xenial
+dist: trusty
 
 cache:
   - packages
@@ -11,7 +11,7 @@ os:
 #  - osx
 
 before_install:
-  - pip install numpy requests bs4 pyyaml
+  - pip install --user numpy requests bs4 pyyaml
 
 r_packages:
   - reticulate
