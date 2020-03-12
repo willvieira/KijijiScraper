@@ -50,8 +50,6 @@ all_KijijiAds = function(URL, exclude = NULL, pages = 3, outputFile = NULL)
   }
 
   # clean ads
-  print(length(ads))
-  print(ads)
   ads <- lapply(ads, function(x) lapply(x, function(xx) gsub("[\r\n]", "", xx)))
 
   # add mail URL info for each add (useful when one list of multiple URL requires)

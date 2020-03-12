@@ -11,6 +11,9 @@ os:
   - linux
 #  - osx
 
+r_github_packages:
+  - datawookie/emayili
+
 before_install:
   - pip install --user numpy requests bs4 pyyaml
 

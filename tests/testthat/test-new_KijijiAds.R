@@ -13,7 +13,7 @@ ads <- ads[-1]
 write(rjson::toJSON(ads), file = 'ads.json')
 
 # get the ads
-newAds <- new_KijijiAds(URL, excludeWords, pages = 1, inputFile = 'ads.json')
+newAds <- new_KijijiAds(URL, exclude = NULL, pages = 1, inputFile = 'ads.json')
 
 # Testing
 test_that("output of function is a list", {
