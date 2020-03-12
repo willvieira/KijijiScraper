@@ -16,10 +16,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
-        
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
@@ -42,3 +43,4 @@ jobs:
 
       - name: Testing with Code coverage
         run: Rscript -e "covr::codecov()"
+
