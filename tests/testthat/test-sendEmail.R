@@ -1,5 +1,6 @@
 context("test sendEmail function")
 library(KijijiScraper)
+library(emayili)
 
 # laading ads
 ads <- rjson::fromJSON(file = 'ads.json')
