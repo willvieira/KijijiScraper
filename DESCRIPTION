@@ -26,6 +26,6 @@ Suggests:
     devtools,
     covr,
     pkgdown,
-    testthat
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
