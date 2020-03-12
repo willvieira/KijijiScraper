@@ -1,6 +1,6 @@
 context("test sendEmail function")
 library(KijijiScraper)
-library(emayili)
+remotes::install_github("datawookie/emayili");library(emayili)
 
 # laading ads
 ads <- rjson::fromJSON(file = 'ads.json')
