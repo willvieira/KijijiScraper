@@ -13,6 +13,8 @@ download.file(Sys.getenv('mailINFO'), '_mailInfo.yml', method = 'auto', quiet = 
 # Testing
 test_that("email is sent", {
 
-  #sendEmail(mailInfo = '_mailInfo.yml', newAds = ads)
+  skip_on_travis()
+  
+  sendEmail(mailInfo = '_mailInfo.yml', newAds = ads)
 
 })
