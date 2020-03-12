@@ -24,8 +24,10 @@
 #' all_KijijiAds(URL, exclude = 'echange', pages = 3, outputFile = 'ads.json')
 #' }
 
-all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
+all_KijijiAds = function(URL, exclude = NULL, pages = 3, outputFile = NULL)
 {
+
+  if(is.null(exclude)) exclude = ''
 
   # pass adsList to KijijiScraper python function
   kijiji = KijijiScraper(exclude = exclude)
@@ -48,6 +50,8 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
   }
 
   # clean ads
+  print(length(ads))
+  print(ads)
   ads <- lapply(ads, function(x) lapply(x, function(xx) gsub("[\r\n]", "", xx)))
 
   # add mail URL info for each add (useful when one list of multiple URL requires)
@@ -85,7 +89,7 @@ all_KijijiAds = function(URL, exclude, pages = 3, outputFile = NULL)
 #' @return list of new ads
 #' @export
 
-new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, outputFile = NULL)
+new_KijijiAds = function(URL, exclude = NULL, pages, inputFile, updateInput = TRUE, outputFile = NULL)
 {
 
   # load ads file if it exists
@@ -95,6 +99,8 @@ new_KijijiAds = function(URL, exclude, pages, inputFile, updateInput = TRUE, out
   }else {
     stop('inputFile is not correct. If you do not have a json file with previews ads, please use the all_KijijiAds() function.')
   }
+
+  if(is.null(exclude)) exclude = ''
 
   # pass adsList to KijijiScraper python function
   kijiji = KijijiScraper(exclude = exclude)
