@@ -8,6 +8,9 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
+      - name: Initial setup
+        env:
+          mailINFO: ${{ secrets.mailINFO }}
       - uses: wei/curl@master
         with:
           args: https://httpbin.org/get
