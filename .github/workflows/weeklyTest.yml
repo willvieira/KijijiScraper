@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: '3.7'
 
-      -name: Install python libraries
-       run: pip install requests bs4 pyyaml
+      - name: Install python libraries
+        run: pip install requests bs4 pyyaml
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -44,4 +44,3 @@ jobs:
 
       - name: Testing with Code coverage
         run: Rscript -e "covr::codecov()"
-        
