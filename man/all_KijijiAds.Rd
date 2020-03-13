@@ -4,7 +4,7 @@
 \alias{all_KijijiAds}
 \title{Retrieve all Kijiji ads}
 \usage{
-all_KijijiAds(URL, exclude, pages = 3, outputFile = NULL)
+all_KijijiAds(URL, exclude = NULL, pages = 3, outputFile = NULL)
 }
 \arguments{
 \item{URL}{character, the address after doing a specific search on Kijiji}

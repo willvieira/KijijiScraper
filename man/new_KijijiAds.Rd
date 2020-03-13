@@ -6,7 +6,7 @@
 \usage{
 new_KijijiAds(
   URL,
-  exclude,
+  exclude = NULL,
   pages,
   inputFile,
   updateInput = TRUE,
