@@ -44,6 +44,8 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Testing with Code coverage
-        run: Rscript -e "covr::codecov()"
+
+      - name: Print a greeting
         env:
           mailINFO: ${{ secrets.mailINFO }}
+        run: Rscript -e "covr::codecov()"
