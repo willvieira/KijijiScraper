@@ -16,9 +16,8 @@ Imports:
     reticulate,
     magrittr,
     rjson,
-    yaml
-Remotes:
-    datawookie/emayili
+    yaml,
+    emayili
 RoxygenNote: 7.0.2
 Suggests:
     knitr,
