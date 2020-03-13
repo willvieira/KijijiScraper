@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Initial setup
-        env:
-          mailINFO: ${{ secrets.mailINFO }}
       - uses: wei/curl@master
         with:
           args: https://httpbin.org/get
@@ -47,3 +45,5 @@ jobs:
 
       - name: Testing with Code coverage
         run: Rscript -e "covr::codecov()"
+        env:
+          mailINFO: ${{ secrets.mailINFO }}
