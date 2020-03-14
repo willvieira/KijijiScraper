@@ -1,6 +1,6 @@
-on:
-  schedule:
-    - cron:  '0 0 * * FRI'
+on: [push, pull_request]
+#  schedule:
+#    - cron:  '0 0 * * FRI'
 
 name: Weekly test
 
