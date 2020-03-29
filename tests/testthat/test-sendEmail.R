@@ -6,7 +6,15 @@ ads <- rjson::fromJSON(file = 'ads.json')
 ads <- ads[1]
 
 # loading mailInfo
-download.file(Sys.getenv('mailINFO'), '_mailInfo.yml', method = 'auto', quiet = TRUE)
+SMTP_USERNAME <- Sys.getenv("SMTP_USERNAME")
+
+infoList <- list(from = SMTP_USERNAME,
+                 to = SMTP_USERNAME,
+                 host = "mail.smtpbucket.com",
+                 port = 8025,
+                 username = SMTP_USERNAME)
+
+write(rjson::toJSON(infoList), file = '_mailInfo.yml')
 
 
 # Testing
