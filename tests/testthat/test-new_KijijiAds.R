@@ -3,7 +3,7 @@ library(KijijiScraper)
 
 # define some variables
 URL = "https://www.kijiji.ca/b-audio/ville-de-montreal/turntable/k0c767l1700281?ll=45.501689%2C-73.567256&address=Montr%C3%A9al%2C+QC&radius=15.0"
-pages = 2
+pages = 3
 
 # get the ads
 ads <- all_KijijiAds(URL, exclude = NULL, pages, NULL)
@@ -13,7 +13,7 @@ ads <- ads[-1]
 write(rjson::toJSON(ads), file = 'ads.json')
 
 # get the ads
-newAds <- new_KijijiAds(URL, exclude = NULL, pages = 1, inputFile = 'ads.json')
+newAds <- new_KijijiAds(URL, exclude = NULL, pages = 2, inputFile = 'ads.json')
 
 # Testing
 test_that("output of function is a list", {
