@@ -1,6 +1,11 @@
 on:
-  schedule:
-    - cron:  '0 0 * * FRI'
+  push:
+    branches:
+    - master
+
+# on:
+#   schedule:
+#     - cron:  '0 0 * * FRI'
 
 name: Weekly test
 
