@@ -45,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -56,7 +56,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/willvieira/KijijiScraper/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -80,51 +80,54 @@
 <a href="#retrieve-new-ads-and-keep-me-updated-when-new-ads-are-found" class="anchor"></a>Retrieve new ads and keep me updated when new ads are found</h2>
 
 <p>This R package have three simple functionalities. From a specific search on the <a href="https://www.kijiji.ca/">Kijiji</a>, it can (i) retrieve all ads and save it in a database to further exploration; (ii) retrieve new ads not present in the current database; and (iii) send a message with the new ads retrieved in the last step.</p>
-<div id="caution" class="section level4">
+<div id="️-caution-️" class="section level4">
 <h4 class="hasAnchor">
-<a href="#caution" class="anchor"></a>⚠️ Caution ⚠️</h4>
-<p>Kijiji does not have an API to retrieve new ads. It means this package relies on web based scrapping, which is not reliable on the long-term. Aware of that, I automated some GitHub actions to test the code every week and keep me updated of any possible bug 🐛</p>
+<a href="#%EF%B8%8F-caution-%EF%B8%8F" class="anchor"></a>⚠️ Caution ⚠️</h4>
+<p>Kijiji does not have an API to retrieve new ads. It means this package relies on web based scrapping, which is not reliable on the long-term. Aware of that, I automated some GitHub actions to test the code every week and keep me updated of any possible bug <span class="emoji" data-emoji="bug">🐛</span></p>
 </div>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>This package requires Python 3+ to be installed along with some Python packages, which can be installed with a standard shell on terminal:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># or pip3</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="ex">pip</span> install requests bs4 pyyaml</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># or pip3</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">pip</span> install requests bs4 pyyaml</span></code></pre></div>
 <p>A R alternative to install Python packages is to use <code>reticulate</code>, which will require a virtual environment (more details <a href="https://rstudio.github.io/reticulate/articles/python_packages.html">here</a>):</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages('reticulate')</span>
-<span class="kw pkg">reticulate</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'requests'</span>, <span class="st">'bs4'</span>, <span class="st">'pyyaml'</span>))</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages('reticulate')</span>
+<span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'requests'</span>, <span class="st">'bs4'</span>, <span class="st">'pyyaml'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Once Python dependencies are solved, you can install the <code>KijijiScraper</code> R package from GitHub:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">'willvieira/kijijiScraper'</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">'willvieira/kijijiScraper'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">kijijiScraper</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">kijijiScraper</span><span class="op">)</span>
 
 <span class="co">## My request</span>
 
   <span class="co"># the url got from a search on kijiji</span>
-  <span class="no">URL</span> <span class="kw">=</span> <span class="st">"https://www.kijiji.ca/b-appartement-condo/ville-de-montreal/3-1-2/k0c37l1700281?price=__840"</span>
+  <span class="va">URL</span> <span class="op">=</span> <span class="st">"https://www.kijiji.ca/b-appartement-condo/ville-de-montreal/3-1-2/k0c37l1700281?price=__840"</span>
 
   <span class="co"># keywords to exclude from search</span>
-  <span class="no">excludeWords</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'recherche'</span>, <span class="st">'recherché'</span>, <span class="st">'échange'</span>, <span class="st">'echange'</span>)
+  <span class="va">excludeWords</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'recherche'</span>, <span class="st">'recherché'</span>, <span class="st">'échange'</span>, <span class="st">'echange'</span><span class="op">)</span>
 
   <span class="co"># the number of pages it will search for ads</span>
-  <span class="no">pages</span> <span class="kw">=</span> <span class="fl">3</span>
+  <span class="va">pages</span> <span class="op">=</span> <span class="fl">3</span>
 
   <span class="co"># file to save the ads (if `NULL` it will return an object list)</span>
-  <span class="no">File</span> <span class="kw">=</span> <span class="st">"ads.json"</span>
+  <span class="va">File</span> <span class="op">=</span> <span class="st">"ads.json"</span>
 
   <span class="co"># search to be saved in the `ads.json` file</span>
-  <span class="fu"><a href="reference/all_KijijiAds.html">all_KijijiAds</a></span>(<span class="no">URL</span>, <span class="no">excludeWords</span>, <span class="no">pages</span>, <span class="no">File</span>)
+  <span class="fu"><a href="reference/all_KijijiAds.html">all_KijijiAds</a></span><span class="op">(</span><span class="va">URL</span>, <span class="va">excludeWords</span>, <span class="va">pages</span>, <span class="va">File</span><span class="op">)</span>
 
   <span class="co"># Once the database is built, get new ads not present in the `ads.json` file,</span>
   <span class="co"># and update the `ads.json` with the new ads</span>
-  <span class="fu"><a href="reference/new_KijijiAds.html">new_KijijiAds</a></span>(<span class="no">URL</span>, <span class="no">excludeWords</span>, <span class="kw">pages</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">inputFile</span> <span class="kw">=</span> <span class="st">'ads.json'</span>, <span class="kw">updateInput</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+  <span class="fu"><a href="reference/new_KijijiAds.html">new_KijijiAds</a></span><span class="op">(</span><span class="va">URL</span>, <span class="va">excludeWords</span>, pages <span class="op">=</span> <span class="fl">1</span>, inputFile <span class="op">=</span> <span class="st">'ads.json'</span>, updateInput <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="co">##</span></pre></div>
+<span class="co">##</span></code></pre></div>
 </div>
 <div id="automating-with-scheduled-ads-search" class="section level2">
 <h2 class="hasAnchor">
@@ -135,23 +138,25 @@
 <h3 class="hasAnchor">
 <a href="#send-email" class="anchor"></a>Send email</h3>
 <p>Before using the <code><a href="reference/sendEmail.html">sendEmail()</a></code> function, you must create a local file (saved here as <code>_mailInfo.yml</code>) in the project directory with the following information:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="fu">from:</span><span class="at"> sender_example@server.com</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="fu">to:</span><span class="at"> example@server.com</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">host:</span><span class="at"> smtp.gmail.com</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="fu">port:</span><span class="at"> 465</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="fu">username:</span><span class="at"> sender_example@server.com</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="fu">password:</span><span class="at"> myPassword</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">from</span><span class="kw">:</span><span class="at"> sender_example@server.com</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">to</span><span class="kw">:</span><span class="at"> example@server.com</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">host</span><span class="kw">:</span><span class="at"> smtp.gmail.com</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">465</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">username</span><span class="kw">:</span><span class="at"> sender_example@server.com</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">password</span><span class="kw">:</span><span class="at"> myPassword</span></span></code></pre></div>
 <p>When setting the <code><a href="reference/sendEmail.html">sendEmail()</a></code> function, first run the <code><a href="reference/all_KijijiAds.html">all_KijijiAds()</a></code> function to create a database of ads:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">kijijiScraper</span>)
-<span class="fu"><a href="reference/all_KijijiAds.html">all_KijijiAds</a></span>(<span class="kw">URL</span> <span class="kw">=</span> <span class="st">'myURL'</span>, <span class="kw">exclude</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'keyword1'</span>, <span class="st">'keyword2'</span>), <span class="kw">pages</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">outputFile</span> <span class="kw">=</span> <span class="st">'ads.json'</span>)</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">kijijiScraper</span><span class="op">)</span>
+<span class="fu"><a href="reference/all_KijijiAds.html">all_KijijiAds</a></span><span class="op">(</span>URL <span class="op">=</span> <span class="st">'myURL'</span>, exclude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'keyword1'</span>, <span class="st">'keyword2'</span><span class="op">)</span>, pages <span class="op">=</span> <span class="fl">4</span>, outputFile <span class="op">=</span> <span class="st">'ads.json'</span><span class="op">)</span></code></pre></div>
 <p>Once your database of ads is set, you can create an R script which will be called by Crontab/Task Scheduler, send you an email if it finds new ads, and finally update your database with the new ads (if <code>updateInput = TRUE</code>):</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="no">URL</span> <span class="kw">=</span> <span class="st">'myURL'</span>
-<span class="no">excludeWords</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'keyword1'</span>, <span class="st">'keyword12'</span>, <span class="st">'...'</span>)
-<span class="fu"><a href="reference/sendEmail.html">sendEmail</a></span>(<span class="kw">mailInfo</span> <span class="kw">=</span> <span class="st">'_mailInfo.yml'</span>, <span class="kw">newAds</span> <span class="kw">=</span> <span class="fu"><a href="reference/new_KijijiAds.html">new_KijijiAds</a></span>(<span class="no">URL</span>,
-                                                             <span class="no">excludeWords</span>,
-                                                             <span class="kw">pages</span> <span class="kw">=</span> <span class="fl">2</span>,
-                                                             <span class="kw">inputFile</span> <span class="kw">=</span> <span class="st">'ads.json'</span>,
-                                                             <span class="kw">updateInput</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">URL</span> <span class="op">=</span> <span class="st">'myURL'</span>
+<span class="va">excludeWords</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'keyword1'</span>, <span class="st">'keyword12'</span>, <span class="st">'...'</span><span class="op">)</span>
+<span class="fu"><a href="reference/sendEmail.html">sendEmail</a></span><span class="op">(</span>mailInfo <span class="op">=</span> <span class="st">'_mailInfo.yml'</span>, newAds <span class="op">=</span> <span class="fu"><a href="reference/new_KijijiAds.html">new_KijijiAds</a></span><span class="op">(</span><span class="va">URL</span>,
+                                                             <span class="va">excludeWords</span>,
+                                                             pages <span class="op">=</span> <span class="fl">2</span>,
+                                                             inputFile <span class="op">=</span> <span class="st">'ads.json'</span>,
+                                                             updateInput <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now you just have to set a Crontab/Task Scheduler to execute the R script above.</p>
 <div id="using-starttls" class="section level4">
 <h4 class="hasAnchor">
@@ -217,7 +222,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

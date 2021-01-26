@@ -91,7 +91,7 @@ with the information of the new ads" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +102,7 @@ with the information of the new ads" />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/willvieira/KijijiScraper/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,10 +129,10 @@ with the information of the new ads" />
 with the information of the new ads</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sendEmail</span>(
-  <span class='kw'>mailInfo</span> <span class='kw'>=</span> <span class='st'>"_mailInfo.yml"</span>,
-  <span class='kw'>newAds</span> <span class='kw'>=</span> <span class='fu'><a href='new_KijijiAds.html'>new_KijijiAds</a></span>(<span class='no'>URL</span>, <span class='no'>excludeWords</span>, <span class='no'>pages</span>, <span class='no'>inputFile</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>sendEmail</span><span class='op'>(</span>
+  mailInfo <span class='op'>=</span> <span class='st'>"_mailInfo.yml"</span>,
+  newAds <span class='op'>=</span> <span class='fu'><a href='new_KijijiAds.html'>new_KijijiAds</a></span><span class='op'>(</span><span class='va'>URL</span>, <span class='va'>excludeWords</span>, <span class='va'>pages</span>, <span class='va'>inputFile</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,12 +159,13 @@ username: <br />
 password: <br /></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>URL</span> <span class='kw'>&lt;-</span> <span class='st'>'https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860'</span>
-<span class='fu'>sendEmail</span>(<span class='st'>'_mailInfo.yml'</span>,
-          <span class='kw'>newAds</span> <span class='kw'>=</span> <span class='fu'><a href='new_KijijiAds.html'>new_KijijiAds</a></span>(<span class='no'>URL</span>, <span class='no'>excludeWords</span>, <span class='kw'>pages</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-                                 <span class='kw'>inputFile</span> <span class='kw'>=</span> <span class='st'>'ads.json'</span>, <span class='kw'>updateInput</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>URL</span> <span class='op'>&lt;-</span> <span class='st'>'https://www.kijiji.ca/b-a-louer/ville-de-montreal/3-1-2/k0c30349001l1700281?price=__860'</span>
+<span class='fu'>sendEmail</span><span class='op'>(</span><span class='st'>'_mailInfo.yml'</span>,
+          newAds <span class='op'>=</span> <span class='fu'><a href='new_KijijiAds.html'>new_KijijiAds</a></span><span class='op'>(</span><span class='va'>URL</span>, <span class='va'>excludeWords</span>, pages <span class='op'>=</span> <span class='fl'>2</span>,
+                                 inputFile <span class='op'>=</span> <span class='st'>'ads.json'</span>, updateInput <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -180,7 +181,7 @@ password: <br /></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
