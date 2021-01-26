@@ -7,7 +7,6 @@ on:
       - master
 
 name: R-CMD-check
-name: Weekly test
 
 jobs:
   Test:
