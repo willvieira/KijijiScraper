@@ -1,0 +1,71 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+name: R-CMD-check
+name: Weekly test
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wei/curl@master
+        with:
+          args: https://httpbin.org/get
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Install python libraries
+        run: pip install requests bs4 pyyaml
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+        run: |
+          sudo apt-get install libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev libgit2-dev
+          Rscript -e "install.packages('remotes')"
+
+      - name: Install dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Testing with Code coverage
+        env:
+          SMTP_USERNAME: ${{ secrets.mailINFO }}
+        run: covr::codecov()
+        shell: Rscript {0}
+
+      - name: Install with devtools
+        env:
+          SMTP_USERNAME: ${{ secrets.mailINFO }}
+        run: devtools::install()
+        shell: Rscript {0}
+
+      - name: Build website
+        env:
+          SMTP_USERNAME: ${{ secrets.mailINFO }}
+        run: pkgdown::build_site()
+        shell: Rscript {0}
+
+      - name: Deploy gh_pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          SINGLE_COMMIT: false
